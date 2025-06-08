@@ -367,7 +367,7 @@ function Chat() {
         try {
             // Replace 123 with actual user ID if you have it in your state/context
             const userId = 123; // You might want to get this from user context or props
-            const response = await fetch(`http://127.0.0.1:8000/users/${chatId}/conversations`);
+            const response = await fetch(`https://oves-bot-dev.omnivoltaic.com/users/${chatId}/conversations`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
