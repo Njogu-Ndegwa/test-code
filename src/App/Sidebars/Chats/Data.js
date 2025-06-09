@@ -21,7 +21,7 @@ import ManAvatar1 from "../../../assets/img/man_avatar1.jpg" // Update with your
 // Function to fetch and map chat data
 export const fetchChatLists = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/users');
+    const response = await fetch('https://ovbot.omnivoltaic.com/users');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
