@@ -367,8 +367,7 @@ function Chat() {
         try {
             // Replace 123 with actual user ID if you have it in your state/context
             const userId = 123; // You might want to get this from user context or props
-            const url = "https://ovbot.omnivoltaic.com"
-            const response = await fetch(`${url}/${chatId}/conversations`);
+            const response = await fetch(`https://ovbot.omnivoltaic.com/users/${chatId}/conversations`);
             console.log('Fetching conversation history for chat ID:', chatId);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
