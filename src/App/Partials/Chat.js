@@ -396,7 +396,7 @@ function Chat() {
             messages.push({
                 id: `q-${index}`,
                 type: 'outgoing-message', // This will make it appear on the right with double-check
-                name: 'You',
+                name: 'Customer',
                 text: item.question,
                 date: new Date().toLocaleTimeString(),
                 avatar: <div className="avatar avatar-sm">
