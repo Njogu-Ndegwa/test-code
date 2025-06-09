@@ -21,7 +21,7 @@ import ManAvatar1 from "../../../assets/img/man_avatar1.jpg" // Update with your
 // Function to fetch and map chat data
 export const fetchChatLists = async () => {
   try {
-    const response = await fetch('https://ovbot.omnivoltaic.com/users');
+    const response = await fetch('http://127.0.0.1:8000/users');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -31,14 +31,15 @@ export const fetchChatLists = async () => {
     
     // Map backend data to frontend structure
     const chatLists = data.users.map(user => ({
-      id: parseInt(user.user_id), // Convert string to number to match frontend
+      id: user.user_id, 
       name: user.user_id, // You mentioned this should be mapped from backend - update as needed
       avatar: (
         <figure className="avatar avatar-state-success">
           <img src={ManAvatar1} className="rounded-circle" alt="avatar"/>
         </figure>
       ),
-      text: <p>{user.latest_text}</p>
+      text: <p>{user.latest_text}</p>,
+      created_at: user.created_at
     }));
     
     return chatLists;

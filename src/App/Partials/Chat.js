@@ -367,14 +367,14 @@ function Chat() {
         try {
             // Replace 123 with actual user ID if you have it in your state/context
             const userId = 123; // You might want to get this from user context or props
-            const response = await fetch(`https://ovbot.omnivoltaic.com/users/${chatId}/conversations`);
-            console.log('Fetching conversation history for chat ID:', chatId);
+            const response = await fetch(`http://127.0.0.1:8000/users/${chatId}/conversations`);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const data = await response.json();
-            
+            console.log('Fetching conversation history for chat ID:', data);
             // Transform backend data to match your frontend message format
             const transformedMessages = transformBackendData(data);
             setConversationHistory(transformedMessages);
@@ -395,10 +395,10 @@ function Chat() {
             // Add user question message (outgoing - appears on right)
             messages.push({
                 id: `q-${index}`,
-                type: 'outgoing-message', // This will make it appear on the right with double-check
+                type: '', // This will make it appear on the right with double-check
                 name: 'Customer',
                 text: item.question,
-                date: new Date().toLocaleTimeString(),
+                date: item.created_at,
                 avatar: <div className="avatar avatar-sm">
                     <span className="avatar-title rounded-circle bg-primary">U</span>
                 </div>
@@ -407,10 +407,10 @@ function Chat() {
             // Add AI response message (no type - appears on left)  
             messages.push({
                 id: `a-${index}`,
-                type: '', // Empty type means incoming/left side (no double-check)
+                type: 'outgoing-message', // Empty type means incoming/left side (no double-check)
                 name: 'AI Assistant', 
                 text: item.answer,
-                date: new Date().toLocaleTimeString(),
+                date: item.created_at,
                 avatar: <div className="avatar avatar-sm">
                     <span className="avatar-title rounded-circle bg-success">AI</span>
                 </div>
