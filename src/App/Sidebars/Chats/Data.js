@@ -61,7 +61,7 @@ export const useChatLists = () => {
   };
 
   const connectWebSocket = useCallback(() => {
-    const wsUrl = 'ws://ovbot.omnivoltaic.com/users';
+    const wsUrl = 'wss://ovbot.omnivoltaic.com/users';
     websocketRef.current = new WebSocket(wsUrl);
 
     websocketRef.current.onopen = () => {

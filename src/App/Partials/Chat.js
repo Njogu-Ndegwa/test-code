@@ -384,7 +384,7 @@ function Chat() {
         if (existing) existing.close();
 
         // Connect to monitoring endpoint
-        const ws = new WebSocket(`ws://ovbot.omnivoltaic.com/users/${userId}/conversations`);
+        const ws = new WebSocket(`wss://ovbot.omnivoltaic.com/users/${userId}/conversations`);
         websocketRef.current = ws;
 
         ws.onopen = () => {
